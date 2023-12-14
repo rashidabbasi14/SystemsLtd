@@ -1,0 +1,11 @@
+ERROR: Row-10: Sign On Name String is less than 5
+ERROR: Row-2101: Sign On Name String is less than 5
+ERROR: Row-2132: Sign On Name String is less than 5
+ERROR: Row-2209: Sign On Name String is less than 5
+ERROR: Row-2214: Sign On Name String is less than 5
+ERROR: Row-2215: Sign On Name String is less than 5
+ERROR: Row-2216: Sign On Name String is less than 5
+ERROR: Row-2217: Sign On Name String is less than 5
+ERROR: Row-2218: Sign On Name String is less than 5
+ERROR: Row-2219: Sign On Name String is less than 5
+ERROR: Row-2223: Sign On Name String is less than 5
