@@ -38,9 +38,13 @@ nws['U1'] = "APPLICATION.LOG"
 nws['V1'] = "FUNCTION.ID.LOG"
 nws['W1'] = "INPUT.DAY.MONTH"
 nws['X1'] = "CLEAR.SCREEN"
-nws['Y1'] = "DEALER.DESK"
-nws['Z1'] = "AMOUNT.FORMAT"
-nws['AA1'] = "DATE.FORMAT"
+
+nws['Y1'] = "OVERRIDE.CLASS"
+
+
+nws['Z1'] = "DEALER.DESK"
+nws['AA1'] = "AMOUNT.FORMAT"
+nws['AB1'] = "DATE.FORMAT"
 
 
 if not os.path.exists("Errors"):  
@@ -88,9 +92,15 @@ for col in ws.iter_cols(min_row = minrow, min_col = mincol, max_col = maxcol, ma
         nws['V'+str(cell.row)] = "Y"
         nws['W'+str(cell.row)] = "DDMM"
         nws['X'+str(cell.row)] = "Y"
-        nws['Y'+str(cell.row)] = "00"
-        nws['Z'+str(cell.row)] = "?."
-        nws['AA'+str(cell.row)] = "1"
+        
+        if ws['H'+str(cell.row)].value in ["TO","GBO"]:
+            nws['Y'+str(cell.row)] = "TOGB"
+        elif ws['H'+str(cell.row)].value in ["OM","BM","AOM","ROM","HBBO"]:
+            nws['Y'+str(cell.row)] = ws['H'+str(cell.row)].value
+        
+        nws['Z'+str(cell.row)] = "00"
+        nws['AA'+str(cell.row)] = "?."
+        nws['AB'+str(cell.row)] = "1"
                
         appl = "ALL.PG" #Other than checker
         c_appl = "@ASA.PK.A.CAD" #Checker
