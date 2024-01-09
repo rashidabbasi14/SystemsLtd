@@ -1,6 +1,0 @@
-1) Excel Sheet name should be UserSheet.xlsx (File Format should be as sample.xlsx)
-2) Run DMT.exe
-3) Errors & Warnings written in Errors Folder
-4) Program will create DMT.xlsx (Open)
-5) Save as CSV format
-6) Repalce Delimiter as per need (,|)
