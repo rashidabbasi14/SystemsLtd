@@ -3,20 +3,29 @@ from openpyxl import load_workbook
 import os
 
 role_application = {}
+browser_preferences = {}
 p_items = []
 s_items = []
 
 def main():
+    # User Data
     wb = load_workbook(filename = 'UserSheet.xlsx')
-    nwb = Workbook()
     ws = wb.active
+    
+    # User DMT Sheet
+    nwb = Workbook()
     nws = nwb.active
+    
+    # Browser Preference DMT Sheet
+    bwb = Workbook()
+    bws = bwb.active
+    
     mincol = 1
     maxcol = 1
     minrow = 2
     maxrow = ws.max_row
 
-    init_headers(nws)
+    init_headers(nws, bws)
     init_error_files()
     init_roles()
 
@@ -55,10 +64,15 @@ def main():
             nws['AA'+str(cell.row)] = "?."
             nws['AB'+str(cell.row)] = "1"
             
-    nwb.save('DMT.xlsx')
+            bws['A'+str(cell.row)] = ""
+            bws['B'+str(cell.row)] = "LOCAL"
+            bws['C'+str(cell.row)] = browser_preferences[ws['H'+str(cell.row)].value] if ws['H'+str(cell.row)].value in browser_preferences else ""
+            
+    nwb.save('User DMT.xlsx')
+    bwb.save('BP DMT.xlsx')
     save_error_files()
        
-def init_headers(nws):
+def init_headers(nws, bws):
     nws['A1'] = "UPLOAD.COMPANY"
     nws['B1'] = "@ID"
     nws['C1'] = "USER.NAME"
@@ -87,6 +101,10 @@ def init_headers(nws):
     nws['Z1'] = "DEALER.DESK"
     nws['AA1'] = "AMOUNT.FORMAT"
     nws['AB1'] = "DATE.FORMAT"
+    
+    bws['A1'] = "SKIN.NAME"
+    bws['B1'] = "PRINT.LOCATION"
+    bws['C1'] = "MAIN.SCREEN"
         
 def init_error_files():
     if not os.path.exists("Errors"):  
@@ -95,6 +113,7 @@ def init_error_files():
 
 def init_roles():
     global role_application
+    global browser_preferences
     appl = "ALL.PG" #Other than checker
     c_appl = "@ASA.PK.A.CAD" #Checker
     m_func = "B C D E F H I L P R S V" #Maker
@@ -139,6 +158,45 @@ def init_roles():
         "HOB": "ASA.PK.V.HOB",
         "DCEO": "ASA.PK.V.DCEO",
         "CEO": "ASA.PK.V.CEO"
+    }
+    
+    browser_preferences = {
+        "TO": "ASA.RBHP.OPR.TO.SCREEN",
+        "GBO": "ASA.RBHP.OPR.GPO.SCREEN",
+        "OM": "ASA.RBHP.OPR.OM.SCREEN",
+        "BM": "ASA.RBHP.OPR.BM.SCREEN",
+        "AOM": "ASA.RBHP.OPR.AOM.SCREEN",
+        "ROM": "ASA.RBHP.OPR.ROM.SCREEN",
+        "HBBO": "ASA.RBHP.OPR.HBBO.SCREEN",
+        "CAOP": "ASA.RBHP.OPR.CAOP.SCREEN",
+        "CAOS": "ASA.RBHP.OPR.CAOS.SCREEN",
+        "CAOM": "ASA.RBHP.OPR.CAOM.SCREEN",
+        "CTDP": "ASA.RBHP.OPR.CTDP.SCREEN",
+        "CTDS": "ASA.RBHP.OPR.CTDS.SCREEN",
+        "CTDM": "ASA.RBHP.OPR.CTDM.SCREEN",
+        "HCO": "ASA.RBHP.OPR.HCO.SCREEN",
+        "OSPM": "ASA.RBHP.OPR.OSPM.SCREEN",
+        "HSPP": "ASA.RBHP.OPR.HSPP.SCREEN",
+        "HOPS": "ASA.RBHP.OPR.HOPS.SCREEN",
+        "CCCS": "ASA.RBHP.OPR.CCCS.SCREEN",
+        "CCCP": "ASA.RBHP.OPR.CCCP.SCREEN",
+        "CCCM": "ASA.RBHP.OPR.CCCM.SCREEN",
+        "LO": "ASA.RBHP.BUS.LO.SCREEN",
+        "ASCM": "ASA.RBHP.BUS.ASCM.ARM.SCREEN",
+        "ARM": "ASA.RBHP.BUS.ASCM.ARM.SCREEN",
+        "SCM": "ASA.RBHP.BUS.SCM.SCREEN",
+        "RM": "ASA.RBHP.BUS.RM.SCREEN",
+        "BM": "ASA.RBHP.BUS.BM.SCREEN",
+        "AM": "ASA.RBHP.BUS.AM.SCREEN",
+        "RH": "ASA.RBHP.BUS.RH.SCREEN",
+        "CA": "ASA.RBHP.BUS.CA.SCREEN",
+        "BA": "ASA.RBHP.BUS.BA.SCREEN",
+        "ZH": "ASA.RBHP.BUS.HEADS.SCREEN",
+        "MD": "ASA.RBHP.BUS.HEADS.SCREEN",
+        "HOD": "ASA.RBHP.BUS.HEADS.SCREEN",
+        "HOB": "ASA.RBHP.BUS.HEADS.SCREEN",
+        "DCEO": "ASA.RBHP.BUS.HEADS.SCREEN",
+        "CEO": "ASA.RBHP.BUS.HEADS.SCREEN"
     }
     
 def save_error_files():
