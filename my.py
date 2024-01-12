@@ -2,6 +2,7 @@ from openpyxl import Workbook
 from openpyxl import load_workbook
 import os
 
+USER_PREFIX = "X."
 role_application = {}
 browser_preferences = {}
 p_items = []
@@ -33,18 +34,19 @@ def main():
         for cell in col:
             if check_errors(ws, cell):
                 continue
-                
+            
+            cell.number_format = '@'
             init_companies(ws,cell)
             nws['A'+str(cell.row)] = ""
-            nws['B'+str(cell.row)] = "U."+str(ws['B'+str(cell.row)].value).rjust(5,"0")
+            nws['B'+str(cell.row)] = USER_PREFIX + str(ws['B'+str(cell.row)].value).rjust(5,"0")
             nws['C'+str(cell.row)] = str(ws['A'+str(cell.row)].value).upper().strip()
             nws['D'+str(cell.row)] = str(ws['B'+str(cell.row)].value).rjust(5,"0")
             nws['E'+str(cell.row)] = "INT"
             nws['F'+str(cell.row)] = "1"
             nws['G'+str(cell.row)] = set_company_codes(ws,cell)
             nws['H'+str(cell.row)] = ws['D'+str(cell.row)].value
-            nws['I'+str(cell.row)] = "20240101M0101"
-            nws['J'+str(cell.row)] = "20231218"
+            nws['I'+str(cell.row)] = "20240601M0101"
+            nws['J'+str(cell.row)] = "20240112"
             nws['K'+str(cell.row)] = "20990321"
             nws['L'+str(cell.row)] = "00:00"
             nws['M'+str(cell.row)] = "24:00"
@@ -64,9 +66,13 @@ def main():
             nws['AA'+str(cell.row)] = "?."
             nws['AB'+str(cell.row)] = "1"
             
+            # BROWSER.PREFERENCES----------------------------
             bws['A'+str(cell.row)] = ""
-            bws['B'+str(cell.row)] = "LOCAL"
-            bws['C'+str(cell.row)] = browser_preferences[ws['H'+str(cell.row)].value] if ws['H'+str(cell.row)].value in browser_preferences else ""
+            bws['B'+str(cell.row)] = USER_PREFIX + str(ws['B'+str(cell.row)].value).rjust(5,"0")
+            bws['C'+str(cell.row)] = ""
+            bws['D'+str(cell.row)] = "LOCAL"
+            bws['E'+str(cell.row)] = browser_preferences[ws['H'+str(cell.row)].value] if ws['H'+str(cell.row)].value in browser_preferences else ""
+            # bws['F'+str(cell.row)] = ws['H'+str(cell.row)].value
             
     nwb.save('User DMT.xlsx')
     bwb.save('BP DMT.xlsx')
@@ -102,9 +108,11 @@ def init_headers(nws, bws):
     nws['AA1'] = "AMOUNT.FORMAT"
     nws['AB1'] = "DATE.FORMAT"
     
-    bws['A1'] = "SKIN.NAME"
-    bws['B1'] = "PRINT.LOCATION"
-    bws['C1'] = "MAIN.SCREEN"
+    bws['A1'] = "UPLOAD.COMPANY"
+    bws['B1'] = "@ID"
+    bws['C1'] = "SKIN.NAME"
+    bws['D1'] = "PRINT.LOCATION"
+    bws['E1'] = "MAIN.SCREEN"
         
 def init_error_files():
     if not os.path.exists("Errors"):  
@@ -236,6 +244,8 @@ def set_override_class(ws,cell):
 def init_companies(ws, cell):
     global p_items
     global s_items
+    p_items = []
+    s_items = []
     
     P_COMPANY = ws['E'+str(cell.row)].value.replace(" ","")
     P_COMPANY = P_COMPANY.replace(",,","")
@@ -250,6 +260,7 @@ def init_companies(ws, cell):
         COMPANY = COMPANY.replace(",","::")
         s_items = COMPANY.split("::")
         s_items = [x for n, x in enumerate(s_items) if x not in s_items[:n]]
+        s_items = [x for n, x in enumerate(s_items) if x not in p_items]
         s_items = [x for n, x in enumerate(s_items) if len(x) == 9 or x == "ALL"]
         
 def set_company_codes(ws,cell):
@@ -269,23 +280,30 @@ def set_company_restr(ws,cell):
 def set_application(ws,cell):
     application = []
     for x in p_items:
-        application.append(role_application[ws['H'+str(cell.row)].value]) if ws['H'+str(cell.row)].value in role_application else ""
+        application.append("@"+role_application[ws['H'+str(cell.row)].value] if ws['H'+str(cell.row)].value in role_application else "ALL.PG")
         
     for x in s_items:
         application.append("ALL.PG")
         
-        
-    return "::".join(application)
+    if(p_items[0] != "ALL"):
+        return "::".join(application) + "::ALL.PG"
+    else:
+        return "::".join(application)   
+    
         
 def set_function(ws,cell):
     function = []
     for x in p_items:
-        function.append("")
+        function.append("" if ws['H'+str(cell.row)].value in role_application else "H L P S V")
         
     for x in s_items:
         function.append("H L P S V")
-        
-    return "::".join(function)
+    
+    if(p_items[0] != "ALL"):
+        return "::".join(function) + "::H L P S V"
+    else:
+        return "::".join(function)
+    
 
 class Error:
     f1 = open("Errors/nameError.txt", "w")
