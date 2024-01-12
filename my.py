@@ -165,7 +165,8 @@ def init_roles():
         "HOD": "ASA.PK.V.HOD",
         "HOB": "ASA.PK.V.HOB",
         "DCEO": "ASA.PK.V.DCEO",
-        "CEO": "ASA.PK.V.CEO"
+        "CEO": "ASA.PK.V.CEO",
+        "IT":  "ASA.PK.ALL.IT"
     }
     
     browser_preferences = {
