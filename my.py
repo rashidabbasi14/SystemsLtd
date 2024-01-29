@@ -1,8 +1,10 @@
 from openpyxl import Workbook
 from openpyxl import load_workbook
+from datetime import datetime
 import os
 
-USER_PREFIX = "X."
+sign_on_prefix = True
+USER_PREFIX = "S."
 role_application = {}
 browser_preferences = {}
 p_items = []
@@ -40,17 +42,17 @@ def main():
             nws['A'+str(cell.row)] = ""
             nws['B'+str(cell.row)] = USER_PREFIX + str(ws['B'+str(cell.row)].value).rjust(5,"0")
             nws['C'+str(cell.row)] = str(ws['A'+str(cell.row)].value).upper().strip()
-            nws['D'+str(cell.row)] = str(ws['B'+str(cell.row)].value).rjust(5,"0")
+            nws['D'+str(cell.row)] = str(ws['B'+str(cell.row)].value).rjust(5,"0") if not sign_on_prefix else USER_PREFIX.replace(".","") + str(ws['B'+str(cell.row)].value).rjust(5,"0")
             nws['E'+str(cell.row)] = "INT"
             nws['F'+str(cell.row)] = "1"
             nws['G'+str(cell.row)] = set_company_codes(ws,cell)
             nws['H'+str(cell.row)] = ws['D'+str(cell.row)].value
             nws['I'+str(cell.row)] = "20240601M0101"
-            nws['J'+str(cell.row)] = "20240112"
+            nws['J'+str(cell.row)] = datetime.today().strftime('%Y%m%d')
             nws['K'+str(cell.row)] = "20990321"
             nws['L'+str(cell.row)] = "00:00"
             nws['M'+str(cell.row)] = "24:00"
-            nws['N'+str(cell.row)] = "999"
+            nws['N'+str(cell.row)] = "5"
             nws['O'+str(cell.row)] = "9"
             nws['P'+str(cell.row)] = set_company_restr(ws,cell)
             nws['Q'+str(cell.row)] = set_application(ws,cell)
@@ -273,7 +275,7 @@ def set_company_restr(ws,cell):
     global p_items
     global s_items
     
-    if(p_items[0] != "ALL"):
+    if "ALL" not in p_items and "ALL" not in s_items:
         return "::".join(p_items + s_items) + "::ALL"
     else:
         return "::".join(p_items + s_items)
@@ -286,7 +288,7 @@ def set_application(ws,cell):
     for x in s_items:
         application.append("ALL.PG")
         
-    if(p_items[0] != "ALL"):
+    if "ALL" not in p_items and "ALL" not in s_items:
         return "::".join(application) + "::ALL.PG"
     else:
         return "::".join(application)   
@@ -300,7 +302,7 @@ def set_function(ws,cell):
     for x in s_items:
         function.append("H L P S V")
     
-    if(p_items[0] != "ALL"):
+    if "ALL" not in p_items and "ALL" not in s_items:
         return "::".join(function) + "::H L P S V"
     else:
         return "::".join(function)
