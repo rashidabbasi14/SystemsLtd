@@ -73,7 +73,7 @@ def main():
             bws['B'+str(cell.row)] = USER_PREFIX + str(ws['B'+str(cell.row)].value).rjust(5,"0")
             bws['C'+str(cell.row)] = ""
             bws['D'+str(cell.row)] = "LOCAL"
-            bws['E'+str(cell.row)] = browser_preferences[ws['H'+str(cell.row)].value] if ws['H'+str(cell.row)].value in browser_preferences else ""
+            bws['E'+str(cell.row)] = browser_preferences[ws['H'+str(cell.row)].value] if ws['H'+str(cell.row)].value in browser_preferences else "ASA.RBHP.BUS.SCREEN"
             # bws['F'+str(cell.row)] = ws['H'+str(cell.row)].value
             
     nwb.save('User DMT.xlsx')
