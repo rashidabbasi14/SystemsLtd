@@ -3,8 +3,8 @@ from openpyxl import load_workbook
 from datetime import datetime
 import os
 
-sign_on_prefix = True
-USER_PREFIX = "S."
+sign_on_prefix = False
+USER_PREFIX = "U."
 role_application = {}
 browser_preferences = {}
 p_items = []
@@ -63,7 +63,10 @@ def main():
             nws['V'+str(cell.row)] = "Y"
             nws['W'+str(cell.row)] = "DDMM"
             nws['X'+str(cell.row)] = "Y"
-            nws['Y'+str(cell.row)] = set_override_class(ws,cell)
+            
+            #nws['Y'+str(cell.row)] = set_override_class(ws,cell)
+            nws['Y'+str(cell.row)] = ""
+            
             nws['Z'+str(cell.row)] = "00"
             nws['AA'+str(cell.row)] = "?."
             nws['AB'+str(cell.row)] = "1"
@@ -158,6 +161,7 @@ def init_roles():
         "SCM": "ASA.PK.ALL.SCM",
         "RM": "ASA.PK.ALL.RM",
         "BM": "ASA.PK.A.BM",
+        "HBM": "ASA.PK.A.BM",
         "AM": "ASA.PK.V.AM",
         "RH": "ASA.PK.V.RH",
         "CA": "ASA.PK.A.CA",
@@ -168,7 +172,9 @@ def init_roles():
         "HOB": "ASA.PK.V.HOB",
         "DCEO": "ASA.PK.V.DCEO",
         "CEO": "ASA.PK.V.CEO",
-        "IT":  "ASA.PK.ALL.IT"
+        "IT":  "ASA.PK.ALL.IT",
+        "CRM":  "ASA.PK.ALL.CRM",
+        "COB":  "ASA.PK.ALL.COB"
     }
     
     browser_preferences = {
@@ -198,6 +204,7 @@ def init_roles():
         "SCM": "ASA.RBHP.BUS.SCM.SCREEN",
         "RM": "ASA.RBHP.BUS.RM.SCREEN",
         "BM": "ASA.RBHP.BUS.BM.SCREEN",
+        "HBM": "ASA.RBHP.BUS.BM.SCREEN",
         "AM": "ASA.RBHP.BUS.AM.SCREEN",
         "RH": "ASA.RBHP.BUS.RH.SCREEN",
         "CA": "ASA.RBHP.BUS.CA.SCREEN",
@@ -207,7 +214,9 @@ def init_roles():
         "HOD": "ASA.RBHP.BUS.HEADS.SCREEN",
         "HOB": "ASA.RBHP.BUS.HEADS.SCREEN",
         "DCEO": "ASA.RBHP.BUS.HEADS.SCREEN",
-        "CEO": "ASA.RBHP.BUS.HEADS.SCREEN"
+        "CEO": "ASA.RBHP.BUS.HEADS.SCREEN",
+        "CRM": "ASA.RBHP.OPR.CRM.SCREEN",
+        "COB": "ASA.RBHP.BUS.COB.SCREEN"
     }
     
 def save_error_files():
