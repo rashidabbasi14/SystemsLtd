@@ -290,10 +290,7 @@ def set_company_restr(ws,cell):
     global p_items
     global s_items
     
-    if "ALL" not in p_items and "ALL" not in s_items:
-        return "::".join(p_items + s_items) + "::ALL"
-    else:
-        return "::".join(p_items + s_items)
+    return "::".join(p_items + s_items)
         
 def set_application(ws,cell):
     application = []
@@ -303,10 +300,7 @@ def set_application(ws,cell):
     for x in s_items:
         application.append("ALL.PG")
         
-    if "ALL" not in p_items and "ALL" not in s_items:
-        return "::".join(application) + "::ALL.PG"
-    else:
-        return "::".join(application)   
+    return "::".join(application)   
     
         
 def set_function(ws,cell):
@@ -317,10 +311,7 @@ def set_function(ws,cell):
     for x in s_items:
         function.append("H L P S V")
     
-    if "ALL" not in p_items and "ALL" not in s_items:
-        return "::".join(function) + "::H L P S V"
-    else:
-        return "::".join(function)
+    return "::".join(function)
 
 def create_csv():
     wb = load_workbook('Output/USER DMT.xlsx')
