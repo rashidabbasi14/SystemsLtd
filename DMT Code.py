@@ -126,7 +126,7 @@ def init_headers(nws, bws):
     bws['E1'] = "MAIN.SCREEN"
         
 def init_error_files():
-    if not os.path.exists("Errors"):  
+    if not os.path.exists("Errors"):
         os.makedirs("Errors") 
     
 
@@ -141,88 +141,96 @@ def init_roles():
     a_func = "A 2 B C D E F H I L P R S V" #All Rights
     
     role_application =	{
-        "TO": "ASA.PK.I.TO",
-        "GBO": "ASA.PK.I.GBO",
-        "OM": "ASA.PK.ALL.OM",
-        "BM": "ASA.PK.ALL.BM",
-        "AOM": "ASA.PK.A.AOM",
-        "ROM": "ASA.PK.A.ROM",
-        "HBBO": "ASA.PK.A.HBBO",
-        "CAOP": "ASA.PK.I.CAOP",
-        "CAOS": "ASA.PK.A.CAOS",
-        "CAOM": "ASA.PK.A.CAOM",
-        "CTDP": "ASA.PK.I.CTDP",
-        "CTDS": "ASA.PK.A.CTDS",
-        "CTDM": "ASA.PK.A.CTDM",
-        "HCO": "ASA.PK.A.HCO",
-        "OSPM": "ASA.PK.V.OSPM",
-        "HSPP": "ASA.PK.V.HSPP",
-        "HOPS": "ASA.PK.A.HOPS",
-        "CCCS": "ASA.PK.I.CCCP",
-        "CCCP": "ASA.PK.A.CCCS",
-        "CCCM": "ASA.PK.A.CCCM",
-        "LO": "ASA.PK.I.LO",
-        "ASCM": "ASA.PK.I.ASCM",
-        "ARM": "ASA.PK.I.ARM",
-        "SCM": "ASA.PK.ALL.SCM",
-        "RM": "ASA.PK.ALL.RM",
-        "BM": "ASA.PK.A.BM",
-        "HBM": "ASA.PK.A.BM",
-        "AM": "ASA.PK.V.AM",
-        "RH": "ASA.PK.V.RH",
-        "CA": "ASA.PK.A.CA",
-        "BA": "ASA.PK.A.BA",
-        "ZH": "ASA.PK.V.ZH",
-        "MD": "ASA.PK.V.MD",
-        "HOD": "ASA.PK.V.HOD",
-        "HOB": "ASA.PK.V.HOB",
-        "DCEO": "ASA.PK.V.DCEO",
-        "CEO": "ASA.PK.V.CEO",
-        "IT":  "ASA.PK.ALL.IT",
-        "CRM":  "ASA.PK.ALL.CRM",
-        "COB":  "ASA.PK.ALL.COB"
+        "TO":"ASA.PK.I.TO",
+        "GBO":"ASA.PK.I.GBO",
+        "OM":"ASA.PK.ALL.OM",
+        "BM":"ASA.PK.ALL.BM",
+        "AOM":"ASA.PK.A.AOM",
+        "ROM":"ASA.PK.A.ROM",
+        "HBBO":"ASA.PK.A.HBBO",
+        "CAOP":"ASA.PK.I.CAOP",
+        "CAOS":"ASA.PK.A.CAOS",
+        "CAOM":"ASA.PK.A.CAOM",
+        "CTDP":"ASA.PK.I.CTDP",
+        "CTDS":"ASA.PK.A.CTDS",
+        "CTDM":"ASA.PK.A.CTDM",
+        "HCO":"ASA.PK.A.HCO",
+        "OSPM":"ASA.PK.V.OSPM",
+        "HSPP":"ASA.PK.V.HSPP",
+        "HOPS":"ASA.PK.A.HOPS",
+        "CCCS":"ASA.PK.I.CCCP",
+        "CCCP":"ASA.PK.A.CCCS",
+        "CCCM":"ASA.PK.A.CCCM",
+        "LO":"ASA.PK.I.LO",
+        "ASCM":"ASA.PK.I.ASCM",
+        "ARM":"ASA.PK.I.ARM",
+        "SCM":"ASA.PK.ALL.SCM",
+        "RM":"ASA.PK.ALL.RM",
+        "BM":"ASA.PK.A.BM",
+        "HBM":"ASA.PK.A.BM",
+        "AM":"ASA.PK.V.AM",
+        "RH":"ASA.PK.V.RH",
+        "CA":"ASA.PK.A.CA",
+        "BA":"ASA.PK.A.BA",
+        "ZH":"ASA.PK.V.ZH",
+        "MD":"ASA.PK.V.MD",
+        "HOD":"ASA.PK.V.HOD",
+        "HOB":"ASA.PK.V.HOB",
+        "DCEO":"ASA.PK.V.DCEO",
+        "CEO":"ASA.PK.V.CEO",
+        "IT":"ASA.PK.ALL.IT",
+        "CRM":"ASA.PK.ALL.CRM",
+        "COB":"ASA.PK.ALL.COB",
+        "FO":"ASA.PK.I.FO",
+        "FM":"ASA.PK.ALL.FM",
+        "ITS":"ASA.PK.ALL.ITS",
+        "TRO":"ASA.PK.V.TRO"
     }
     
     browser_preferences = {
-        "TO": "ASA.RBHP.OPR.TO.SCREEN",
-        "GBO": "ASA.RBHP.OPR.GPO.SCREEN",
-        "OM": "ASA.RBHP.OPR.OM.SCREEN",
-        "BM": "ASA.RBHP.OPR.BM.SCREEN",
-        "AOM": "ASA.RBHP.OPR.AOM.SCREEN",
-        "ROM": "ASA.RBHP.OPR.ROM.SCREEN",
-        "HBBO": "ASA.RBHP.OPR.HBBO.SCREEN",
-        "CAOP": "ASA.RBHP.OPR.CAOP.SCREEN",
-        "CAOS": "ASA.RBHP.OPR.CAOS.SCREEN",
-        "CAOM": "ASA.RBHP.OPR.CAOM.SCREEN",
-        "CTDP": "ASA.RBHP.OPR.CTDP.SCREEN",
-        "CTDS": "ASA.RBHP.OPR.CTDS.SCREEN",
-        "CTDM": "ASA.RBHP.OPR.CTDM.SCREEN",
-        "HCO": "ASA.RBHP.OPR.HCO.SCREEN",
-        "OSPM": "ASA.RBHP.OPR.OSPM.SCREEN",
-        "HSPP": "ASA.RBHP.OPR.HSPP.SCREEN",
-        "HOPS": "ASA.RBHP.OPR.HOPS.SCREEN",
-        "CCCS": "ASA.RBHP.OPR.CCCS.SCREEN",
-        "CCCP": "ASA.RBHP.OPR.CCCP.SCREEN",
-        "CCCM": "ASA.RBHP.OPR.CCCM.SCREEN",
-        "LO": "ASA.RBHP.BUS.LO.SCREEN",
-        "ASCM": "ASA.RBHP.BUS.ASCM.ARM.SCREEN",
-        "ARM": "ASA.RBHP.BUS.ASCM.ARM.SCREEN",
-        "SCM": "ASA.RBHP.BUS.SCM.SCREEN",
-        "RM": "ASA.RBHP.BUS.RM.SCREEN",
-        "BM": "ASA.RBHP.BUS.BM.SCREEN",
-        "HBM": "ASA.RBHP.BUS.BM.SCREEN",
-        "AM": "ASA.RBHP.BUS.AM.SCREEN",
-        "RH": "ASA.RBHP.BUS.RH.SCREEN",
-        "CA": "ASA.RBHP.BUS.CA.SCREEN",
-        "BA": "ASA.RBHP.BUS.BA.SCREEN",
-        "ZH": "ASA.RBHP.BUS.HEADS.SCREEN",
-        "MD": "ASA.RBHP.BUS.HEADS.SCREEN",
-        "HOD": "ASA.RBHP.BUS.HEADS.SCREEN",
-        "HOB": "ASA.RBHP.BUS.HEADS.SCREEN",
-        "DCEO": "ASA.RBHP.BUS.HEADS.SCREEN",
-        "CEO": "ASA.RBHP.BUS.HEADS.SCREEN",
-        "CRM": "ASA.RBHP.OPR.CRM.SCREEN",
-        "COB": "ASA.RBHP.BUS.COB.SCREEN"
+        "TO":"ASA.RBHP.OPR.TO.SCREEN",
+        "GBO":"ASA.RBHP.OPR.GPO.SCREEN",
+        "OM":"ASA.RBHP.OPR.OM.SCREEN",
+        "BM":"ASA.RBHP.OPR.BM.SCREEN",
+        "AOM":"ASA.RBHP.OPR.AOM.SCREEN",
+        "ROM":"ASA.RBHP.OPR.ROM.SCREEN",
+        "HBBO":"ASA.RBHP.OPR.HBBO.SCREEN",
+        "CAOP":"ASA.RBHP.OPR.CAOP.SCREEN",
+        "CAOS":"ASA.RBHP.OPR.CAOS.SCREEN",
+        "CAOM":"ASA.RBHP.OPR.CAOM.SCREEN",
+        "CTDP":"ASA.RBHP.OPR.CTDP.SCREEN",
+        "CTDS":"ASA.RBHP.OPR.CTDS.SCREEN",
+        "CTDM":"ASA.RBHP.OPR.CTDM.SCREEN",
+        "HCO":"ASA.RBHP.OPR.HCO.SCREEN",
+        "OSPM":"ASA.RBHP.OPR.OSPM.SCREEN",
+        "HSPP":"ASA.RBHP.OPR.HSPP.SCREEN",
+        "HOPS":"ASA.RBHP.OPR.HOPS.SCREEN",
+        "CCCS":"ASA.RBHP.OPR.CCCS.SCREEN",
+        "CCCP":"ASA.RBHP.OPR.CCCP.SCREEN",
+        "CCCM":"ASA.RBHP.OPR.CCCM.SCREEN",
+        "LO":"ASA.RBHP.BUS.LO.SCREEN",
+        "ASCM":"ASA.RBHP.BUS.ASCM.ARM.SCREEN",
+        "ARM":"ASA.RBHP.BUS.ASCM.ARM.SCREEN",
+        "SCM":"ASA.RBHP.BUS.SCM.SCREEN",
+        "RM":"ASA.RBHP.BUS.RM.SCREEN",
+        "BM":"ASA.RBHP.BUS.BM.SCREEN",
+        "HBM":"ASA.RBHP.BUS.BM.SCREEN",
+        "AM":"ASA.RBHP.BUS.AM.SCREEN",
+        "RH":"ASA.RBHP.BUS.RH.SCREEN",
+        "CA":"ASA.RBHP.BUS.CA.SCREEN",
+        "BA":"ASA.RBHP.BUS.BA.SCREEN",
+        "ZH":"ASA.RBHP.BUS.HEADS.SCREEN",
+        "MD":"ASA.RBHP.BUS.HEADS.SCREEN",
+        "HOD":"ASA.RBHP.BUS.HEADS.SCREEN",
+        "HOB":"ASA.RBHP.BUS.HEADS.SCREEN",
+        "DCEO":"ASA.RBHP.BUS.HEADS.SCREEN",
+        "CEO":"ASA.RBHP.BUS.HEADS.SCREEN",
+        "CRM":"ASA.RBHP.OPR.CRM.SCREEN",
+        "COB":"ASA.RBHP.BUS.COB.SCREEN",
+        "FO":"ASA.RBHP.FIN.FO.SCREEN",
+        "FM":"ASA.RBHP.FIN.FM.SCREEN",
+        "ITS":"ASA.RBHP.ITS.SCREEN",
+        "TRO":"ASA.RBHP.TRO.SCREEN"
     }
     
 def save_error_files():
@@ -240,15 +248,15 @@ def save_error_files():
         
 def check_errors(ws, cell):
     if ws['A'+str(cell.row)].value == None:
-        Error.f1.write("ERROR: Row-"+str(cell.row) + ": Name is Empty\n")
+        Error.f1.write("ERROR:Row-"+str(cell.row) + ":Name is Empty\n")
     if len(str(ws['B'+str(cell.row)].value)) < 5:
-        Error.f2.write("ERROR: Row-"+str(cell.row) + ": Sign On Name String is less than 5\n")
+        Error.f2.write("ERROR:Row-"+str(cell.row) + ":Sign On Name String is less than 5\n")
     if len(str(ws['D'+str(cell.row)].value)) > 2:
-        Error.f3.write("WARNING Row-"+str(cell.row) + ": DAO Warning (Greater than 2)\n")
+        Error.f3.write("WARNING Row-"+str(cell.row) + ":DAO Warning (Greater than 2)\n")
     if ws['E'+str(cell.row)].value == None or len(str(ws['E'+str(cell.row)].value)) != 9:
-        Error.f4.write("ERROR: Row-"+str(cell.row) + ": Primary Company is Empty or not length of 9\n")
+        Error.f4.write("ERROR:Row-"+str(cell.row) + ":Primary Company is Empty or not length of 9\n")
     if ws['C'+str(cell.row)].value == None:
-        Error.f5.write("ERROR: Row-"+str(cell.row) + ": Role is Field\n")
+        Error.f5.write("ERROR:Row-"+str(cell.row) + ":Role is Field\n")
         
     return ws['B'+str(cell.row)].value == None
     
@@ -318,13 +326,13 @@ def create_csv():
     sh = wb.active # was .get_active_sheet()
     with open('Output/USER.'+datetime.today().strftime('%Y%m%d')+'.txt', 'w', newline="") as file_handle:
         csv_writer = csv.writer(file_handle, delimiter='|')
-        for row in sh.iter_rows(): # generator; was sh.rows
+        for row in sh.iter_rows():# generator; was sh.rows
             csv_writer.writerow([cell.value for cell in row])
     wb = load_workbook('Output/BP DMT.xlsx')
     sh = wb.active # was .get_active_sheet()
     with open('Output/BP.'+datetime.today().strftime('%Y%m%d')+'.txt', 'w', newline="") as file_handle:
         csv_writer = csv.writer(file_handle, delimiter='|')
-        for row in sh.iter_rows(): # generator; was sh.rows
+        for row in sh.iter_rows():# generator; was sh.rows
             csv_writer.writerow([cell.value for cell in row])
    
     wb = load_workbook('Input/UserSheet.xlsx')
