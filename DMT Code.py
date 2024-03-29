@@ -5,7 +5,7 @@ import os
 import csv
 
 sign_on_prefix = False
-USER_PREFIX = "Z."
+USER_PREFIX = "U."
 role_application = {}
 browser_preferences = {}
 p_items = []
